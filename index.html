@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Call</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  </head>
+  <body>
+    <!-- Main Container -->
+    <div class="app-container">
+      <!-- Header -->
+      <div class="header">
+        <div class="header-content">
+          <div class="header-left">
+            <i class="fab fa-whatsapp"></i>
+            <h1>Video Call</h1>
+          </div>
+          <div class="header-right">
+            <button class="header-btn" id="infoButton">
+              <i class="fas fa-info-circle"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Video Call Interface -->
+        <div class="video-call-container" id="videoCallContainer">
+          <!-- Call Header -->
+          <div class="call-header">
+            <div class="call-info">
+              <div class="caller-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="caller-details">
+                <h3 id="callerName">Video Call</h3>
+                <p id="callStatus">Connecting...</p>
+              </div>
+            </div>
+            <div class="call-header-right">
+              <div class="call-timer" id="callTimer">00:00</div>
+              <button class="header-btn fullscreen-btn" id="fullscreenButton" title="Toggle fullscreen">
+                <i class="fas fa-expand"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="video-grid">
+            <!-- Remote Video (Main) -->
+            <div class="remote-video-container">
+              <video id="remoteVideo" autoplay playsinline></video>
+              <div class="video-overlay" id="remoteOverlay">
+                <div class="user-info">
+                  <div class="avatar-large">
+                    <i class="fas fa-user"></i>
+                  </div>
+                  <h3>Waiting for connection...</h3>
+                  <p>Make sure your camera and microphone are enabled</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Local Video (Preview) -->
+            <div class="local-video-container">
+              <video id="webcamVideo" autoplay playsinline></video>
+              <div class="video-overlay" id="localOverlay">
+                <div class="user-info">
+                  <div class="avatar-small">
+                    <i class="fas fa-user"></i>
+                  </div>
+                  <span>You</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Call Controls -->
+          <div class="call-controls">
+            <button class="control-btn mute-btn" id="muteButton" title="Mute">
+              <i class="fas fa-microphone"></i>
+            </button>
+            <button class="control-btn video-btn" id="videoButton" title="Turn off camera">
+              <i class="fas fa-video"></i>
+            </button>
+            <button class="control-btn speaker-btn" id="speakerButton" title="Speaker">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <button class="control-btn end-call-btn" id="hangupButton" title="End call">
+              <i class="fas fa-phone-slash"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Call Setup Interface -->
+        <div class="setup-container" id="setupContainer">
+          <div class="setup-content">
+            <!-- WhatsApp-style header -->
+            <div class="setup-header">
+              <div class="setup-avatar">
+                <i class="fas fa-video"></i>
+              </div>
+              <h2>Video Call</h2>
+              <p>Start a secure video call with anyone, anywhere</p>
+            </div>
+            
+            <!-- Main action button -->
+            <div class="main-action">
+              <button class="primary-btn" id="webcamButton">
+                <div class="btn-icon">
+                  <i class="fas fa-video"></i>
+                </div>
+                <div class="btn-text">
+                  <span class="btn-title">Start Video Call</span>
+                  <span class="btn-subtitle">Create a new call and share the link</span>
+                </div>
+              </button>
+            </div>
+
+            <!-- Call actions -->
+            <div class="call-actions" id="callActions" style="display: none;">
+              <div class="action-section">
+                <h3>Create Call</h3>
+                <button class="secondary-btn" id="callButton">
+                  <i class="fas fa-phone"></i>
+                  <span>Create New Call</span>
+                </button>
+              </div>
+              
+              <div class="divider">
+                <span>or</span>
+              </div>
+              
+              <div class="action-section">
+                <h3>Join Call</h3>
+                <div class="input-group">
+                  <input type="text" id="callInput" placeholder="Enter Call ID or paste link">
+                  <button class="join-btn" id="answerButton">
+                    <i class="fas fa-phone"></i>
+                    <span>Join</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Call ID Display -->
+            <div class="call-id-display" id="callIdDisplay" style="display: none;">
+              <div class="share-section">
+                <h3>Share Call Link</h3>
+                <p>Send this link to the person you want to call</p>
+                <div class="call-link">
+                  <input type="text" id="callLinkInput" readonly>
+                  <button class="copy-btn" id="copyButton">
+                    <i class="fas fa-copy"></i>
+                  </button>
+                </div>
+                <div class="share-options">
+                  <button class="share-btn" id="shareWhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                    Share on WhatsApp
+                  </button>
+                  <button class="share-btn" id="shareOther">
+                    <i class="fas fa-share"></i>
+                    Share
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
