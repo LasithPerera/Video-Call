@@ -307,6 +307,16 @@ function updateCallLink(callId) {
   const callLink = `${window.location.origin}?call=${callId}`;
   callLinkInput.value = callLink;
   callIdDisplay.style.display = 'block';
+  
+  // Save call link to local storage
+  try {
+    localStorage.setItem('videoCallLink', callLink);
+    localStorage.setItem('videoCallId', callId);
+    localStorage.setItem('videoCallTimestamp', Date.now().toString());
+    console.log('✅ Video call link saved to local storage');
+  } catch (error) {
+    console.warn('⚠️ Could not save to local storage:', error);
+  }
 }
 
 // Check for call ID in URL
